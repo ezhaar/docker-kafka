@@ -13,7 +13,7 @@ docker build . -t izhar/kafka
 
 ```bash
 
-docker run -d --name zk --hostname zk ezhaar/zookeeper
+docker run -d --name zk --hostname zk izhar/zookeeper
 
 # get the ip address of zkserver
 docker inspect zk | grep -i ip
