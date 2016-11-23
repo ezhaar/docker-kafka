@@ -5,7 +5,7 @@
 ```bash
 git clone git://github.com/ezhaar/docker-zookeeper
 cd docker-kafka
-docker build . -t ezhaar/kafkaServer
+docker build . -t izhar/kafka
 
 ```
 
@@ -13,20 +13,29 @@ docker build . -t ezhaar/kafkaServer
 
 ```bash
 
-docker run -d --name zk ezhaar/zookeeper
+docker run -d --name zk --hostname zk ezhaar/zookeeper
 
 # get the ip address of zkserver
 docker inspect zk | grep -i ip
 
 ```
 
-### Testing from same container
+### Creating multiple containers
 
 ```bash
-docker run -d --name k0 -e BROKERID=<broker_ID> -e ZKHOST=<zk_ip> izhar/kafka
+docker run -d --name k0 --hostname k0 -e BROKERID=0 -e ZKHOST=<zk_ip> izhar/kafka
+docker run -d --name k1 --hostname k1 -e BROKERID=1 -e ZKHOST=<zk_ip> izhar/kafka
+docker run -d --name k2 --hostname k2 -e BROKERID=2 -e ZKHOST=<zk_ip> izhar/kafka
 
 # connect an interactive shell on the running container
 docker exec -it k0 /bin/bash
 ```
 
+### Create Topic and Start Sending/Receiving Events
+```bash
+docker exec k0 /kafka_2.10-0.10.1.0/bin/kafka-topics.sh --create --zookeeper 172.17.0.2:2181 --replication-factor 1 --partitions 1 --topic test
+docker exec k0 /kafka_2.10-0.10.1.0/bin/kafka-console-producer.sh --broker-list 172.17.0.3:9092 --topic test
 
+# test from another terminal to see that we can consume msgs
+docker exec k0 /kafka_2.10-0.10.1.0/bin/kafka-console-consumer.sh --bootstrap-server 172.17.0.3:9092 --topic test --from-beginning
+```
