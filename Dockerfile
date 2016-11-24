@@ -18,4 +18,8 @@ ENV TERM xterm
 COPY run.sh /root/
 CMD ["/root/run.sh"]
 
-
+#ToDo:
+#--env KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
+#advertised_host
+# ip of producer must be known to kafka 
+#setting to stop producers from creating topics by subscribing to a topic that doesnt exist
