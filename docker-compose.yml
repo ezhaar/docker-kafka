@@ -6,8 +6,11 @@ services:
   kafka:
     depends_on:
       - zookeeper
+    build: .
     image: izhar/kafka
     hostname: kafka
     environment:
       ZKHOST: zookeeper
+      ADVERTISED_PORT: 9092
+      ADVERTISED_HOST: $HOSTNAME
       BROKERID: -1
