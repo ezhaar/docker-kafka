@@ -1,0 +1,13 @@
+version: '2'
+services:
+  zookeeper:
+    image: izhar/zk
+    hostname: zookeeper
+  kafka:
+    depends_on:
+      - zookeeper
+    image: izhar/kafka
+    hostname: kafka
+    environment:
+      ZKHOST: zookeeper
+      BROKERID: 0
