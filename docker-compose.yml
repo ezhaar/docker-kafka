@@ -10,4 +10,4 @@ services:
     hostname: kafka
     environment:
       ZKHOST: zookeeper
-      BROKERID: 0
+      BROKERID: -1

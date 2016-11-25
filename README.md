@@ -1,13 +1,33 @@
-## Zookeeper Server Image
+# Kafka Image
 
+## Using Docker Compose:
+- Install docker-compose: 
+```bash
+pip install docker-compose
+```
 ### Build the Container
 
 ```bash
 git clone git://github.com/ezhaar/docker-kafka
 cd docker-kafka
 docker build . -t izhar/kafka
-
 ```
+
+### Start Everything
+```bash
+cd docker-kafka
+docker-compose up -d
+```
+This will start a single instance of zookeeper and kafka.
+
+### Create more kafka instances:
+```bash
+docker-compose scale kafka=3
+```
+
+## Manual Setup
+
+If you dont want to use `docker-compose` then try the manual instructions:
 
 ### Start Zookeeper Server
 
