@@ -24,9 +24,6 @@ This will start a single instance of zookeeper and kafka.
 ```bash
 docker-compose scale kafka=3
 ```
-### connect an interactive shell on the running container
-docker exec -it k0 /bin/bash
-```
 
 ### Create Topic and Start Sending/Receiving Events
 ```bash
