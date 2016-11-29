@@ -1,11 +1,11 @@
 # Kafka Image
 
-## Using Docker Compose:
+## 1. Using Docker Compose:
 - Install docker-compose:
 ```bash
 pip install docker-compose
 ```
-### Build the Container
+### 2. Build the Container
 
 ```bash
 git clone git://github.com/ezhaar/docker-kafka
@@ -13,19 +13,27 @@ cd docker-kafka
 docker build . -t kafka
 ```
 
-### Start Everything
+### 3. Build Zookeeper
+If you havent build zookeeper image already, please follow the following steps, otherwise move on to step 4.
+```bash
+git clone git://github.com/ezhaar/docker-zookeeper
+cd docker-zookeeper
+docker build . -t zookeeper
+```
+
+### 4. Start Everything
 ```bash
 cd docker-kafka
 docker-compose up -d
 ```
 This will start a single instance of zookeeper and kafka.
 
-### Create more kafka instances:
+### 5. Create more kafka instances:
 ```bash
 docker-compose scale kafka=3
 ```
 
-### Create Topic and Start Sending/Receiving Events
+### 6. Create Topic and Start Sending/Receiving Events
 ```bash
 docker exec <kafka_container> /kafka_2.10-0.10.1.0/bin/kafka-topics.sh --create --zookeeper <zookeeper_ip>:2181 --replication-factor 1 --partitions 1 --topic test
 
