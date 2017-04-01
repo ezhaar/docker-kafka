@@ -6,11 +6,11 @@ USER root
 RUN yum update -y
 RUN yum install -y java-1.8.0-openjdk-headless.x86_64
 RUN yum clean all
-RUN curl -o kafka_2.10-0.10.1.0.tgz http://apache.mirrors.spacedump.net/kafka/0.10.1.0/kafka_2.10-0.10.1.0.tgz
-RUN tar -xzf kafka_2.10-0.10.1.0.tgz
-RUN rm kafka_2.10-0.10.1.0.tgz
+RUN curl -o kafka_2.11-0.10.2.0.tgz http://apache.mirrors.spacedump.net/kafka/0.10.2.0/kafka_2.11-0.10.2.0.tgz
+RUN tar -xzf kafka_2.11-0.10.2.0.tgz
+RUN rm kafka_2.11-0.10.2.0.tgz
 EXPOSE 9092
-ENV KAFKA_HOME /kafka_2.10-0.10.1.0
+ENV KAFKA_HOME /kafka_2.11-0.10.2.0
 ENV PATH $PATH:$KAFKA_HOME/bin
 WORKDIR /
 
