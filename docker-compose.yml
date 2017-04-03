@@ -7,7 +7,7 @@ services:
     depends_on:
       - zookeeper
     build: .
-    image: izhar/kafka_211
+    image: izhar/kafka08
     environment:
       ZKHOST: zookeeper
-      BROKERID: -1
+      BROKERID: 0

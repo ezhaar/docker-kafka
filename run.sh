@@ -1,6 +1,6 @@
 #!/bin/bash
 if [[ -z "$BROKERID" ]]; then
-    export BROKERID=-1
+    export BROKERID=0
 fi
 
 if [[ -z "$KAFKA_PORT" ]]; then
