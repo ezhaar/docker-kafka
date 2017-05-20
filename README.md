@@ -10,7 +10,7 @@ pip install docker-compose
 ```bash
 git clone git://github.com/ezhaar/docker-kafka
 cd docker-kafka
-docker build . -t kafka
+docker build . -t izhar/kafka_211
 ```
 
 ### 3. Build Zookeeper
@@ -18,7 +18,7 @@ If you havent build zookeeper image already, please follow the following steps, 
 ```bash
 git clone git://github.com/ezhaar/docker-zookeeper
 cd docker-zookeeper
-docker build . -t zookeeper
+docker build . -t izhar/zookeeper
 ```
 
 ### 4. Start Everything
