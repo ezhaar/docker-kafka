@@ -10,4 +10,5 @@ services:
     image: izhar/kafka_211
     environment:
       ZKHOST: zookeeper
+      # auto generate broker ids
       BROKERID: -1
