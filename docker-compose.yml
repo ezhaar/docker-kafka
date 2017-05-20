@@ -1,7 +1,7 @@
 version: '2'
 services:
   zookeeper:
-    image: izhar/zk
+    image: izhar/zookeeper
     hostname: zookeeper
   kafka:
     depends_on:
